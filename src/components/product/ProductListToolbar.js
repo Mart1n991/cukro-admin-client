@@ -6,7 +6,7 @@ const ProductListToolbar = (props) => {
   let navigate = useNavigate();
 
   const newProduct = () => {
-    navigate('../products/new');
+    navigate('../produkt/novy');
     props.setProduct({
       categoryId: '',
       name: '',

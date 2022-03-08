@@ -17,14 +17,14 @@ const routes = [
     path: 'app',
     element: <DashboardLayout />,
     children: [
-      { path: 'account', element: <Account /> },
+      { path: 'ucet', element: <Account /> },
       { path: 'enums', element: <ProductsList /> },
-      { path: 'customers', element: <CustomerList /> },
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'products', element: <ProductList /> },
-      { path: 'products/new', element: <Product /> },
-      { path: 'product/:id', element: <Product /> },
-      { path: 'settings', element: <Settings /> },
+      { path: 'zakaznici', element: <CustomerList /> },
+      { path: 'prehlad', element: <Dashboard /> },
+      { path: 'produkty', element: <ProductList /> },
+      { path: 'produkt/novy', element: <Product /> },
+      { path: 'produkt/:id', element: <Product /> },
+      { path: 'nastavenia', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },
@@ -35,7 +35,7 @@ const routes = [
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
       { path: '404', element: <NotFound /> },
-      { path: '/', element: <Navigate to="/app/dashboard" /> },
+      { path: '/', element: <Navigate to="/app/prehlad" /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   }

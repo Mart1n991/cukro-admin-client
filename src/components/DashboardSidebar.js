@@ -1,16 +1,7 @@
 import { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Avatar,
-  Box,
-  Button,
-  Divider,
-  Drawer,
-  Hidden,
-  List,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, Button, Divider, Drawer, Hidden, List, Typography } from '@mui/material';
 import {
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
@@ -26,50 +17,30 @@ import NavItem from './NavItem';
 
 const items = [
   {
-    href: '/app/dashboard',
+    href: '/app/prehlad',
     icon: BarChartIcon,
     title: 'Prehľad'
   },
   {
-    href: '/app/customers',
+    href: '/app/zakaznici',
     icon: UsersIcon,
     title: 'Zákazníci'
   },
   {
-    href: '/app/enums',
-    icon: ShoppingBagIcon,
+    href: '/app/produkty',
+    icon: FolderIcon,
     title: 'Produkty'
   },
   {
-    href: '/app/products',
-    icon: FolderIcon,
-    title: 'Products'
-  },
-  {
-    href: '/app/account',
+    href: '/app/ucet',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Účet'
   },
   {
-    href: '/app/settings',
+    href: '/app/nastavenia',
     icon: SettingsIcon,
-    title: 'Settings'
+    title: 'Nastavenia'
   }
-  // {
-  //   href: '/login',
-  //   icon: LockIcon,
-  //   title: 'Login'
-  // },
-  // {
-  //   href: '/register',
-  //   icon: UserPlusIcon,
-  //   title: 'Register'
-  // },
-  // {
-  //   href: '/404',
-  //   icon: AlertCircleIcon,
-  //   title: 'Error'
-  // }
 ];
 
 const DashboardSidebar = ({ onMobileClose, openMobile, user }) => {
@@ -118,12 +89,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile, user }) => {
       <Box sx={{ p: 2 }}>
         <List>
           {items.map((item) => (
-            <NavItem
-              href={item.href}
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-            />
+            <NavItem href={item.href} key={item.title} title={item.title} icon={item.icon} />
           ))}
         </List>
       </Box>
@@ -134,30 +100,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile, user }) => {
           m: 2,
           p: 2
         }}
-      >
-        {/* <Typography align="center" gutterBottom variant="h4">
-          Need more?
-        </Typography>
-        <Typography align="center" variant="body2">
-          Upgrade to PRO version and access 20 more screens
-        </Typography>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            pt: 2
-          }}
-        >
-          <Button
-            color="primary"
-            component="a"
-            href="https://react-material-kit.devias.io"
-            variant="contained"
-          >
-            See PRO version
-          </Button>
-        </Box> */}
-      </Box>
+      ></Box>
     </Box>
   );
 

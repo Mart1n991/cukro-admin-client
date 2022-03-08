@@ -39,7 +39,7 @@ const ProductCard = ({ item, deleteProduct, updateProduct }) => {
   };
 
   const edit = (id) => {
-    navigate(`../product/${id}`);
+    navigate(`../produkt/${id}`);
   };
 
   const markAsUnavailble = async (id) => {
