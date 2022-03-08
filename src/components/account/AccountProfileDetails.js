@@ -33,7 +33,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="Meno"
+                    label="Meno cukrárne"
                     name="name"
                     value={values.name}
                     variant="outlined"
@@ -115,7 +115,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'flex-end',
+                justifyContent: 'center',
                 p: 2
               }}
             >

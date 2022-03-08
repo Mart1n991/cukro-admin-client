@@ -1,25 +1,16 @@
 import moment from 'moment';
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, Divider, Typography } from '@mui/material';
 import AvatarPicker from './AvatarPicker';
 
 const AccountProfile = ({ user, updateUser }) => {
   const onChangeAvatar = async (avatar) => {
-
-    const u = { ...user, avatar: avatar.split(",").pop() };
-    await updateUser(u)
-  }
+    const u = { ...user, avatar: avatar.split(',').pop() };
+    await updateUser(u);
+  };
 
   return (
     <Card>
+      <CardHeader title="Logo cukrárne" subheader="Zmena loga " />
       <CardContent>
         <Box
           sx={{
@@ -28,10 +19,7 @@ const AccountProfile = ({ user, updateUser }) => {
             flexDirection: 'column'
           }}
         >
-          <AvatarPicker
-            src={user.avatar}
-            onChange={onChangeAvatar}
-          />
+          <AvatarPicker src={user.avatar} onChange={onChangeAvatar} />
           <Typography color="textPrimary" gutterBottom variant="h3">
             {user.name}
           </Typography>

@@ -22,15 +22,13 @@ const Account = () => {
       >
         <Container maxWidth="lg">
           <Grid container spacing={3}>
-            <Grid item lg={4} md={6} xs={12}>
-              <Box>
-                <AccountProfile user={user} updateUser={updateUser} />
-              </Box>
-              <Box sx={{ marginTop: '30px' }}>
-                <SettingsPassword user={user} updateUser={updateUser} />
-              </Box>
+            <Grid item lg={6} md={6} xs={12}>
+              <AccountProfile user={user} updateUser={updateUser} />
             </Grid>
-            <Grid item lg={8} md={6} xs={12}>
+            <Grid item lg={6} md={6} xs={12}>
+              <SettingsPassword user={user} updateUser={updateUser} />
+            </Grid>
+            <Grid item lg={12}>
               <AccountProfileDetails user={user} updateUser={updateUser} />
             </Grid>
           </Grid>
