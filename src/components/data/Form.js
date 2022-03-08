@@ -105,7 +105,8 @@ const Form = ({
                 return (
                   <SwitchField 
                     key={x.field}
-                    value={x.value}
+                    value={values[x.field]}
+                    name={x.field}
                     setValue={setFieldValue}
                     label={x.headerName}
                     disabled={disabled}
