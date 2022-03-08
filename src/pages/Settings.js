@@ -21,12 +21,7 @@ const SettingsView = () => {
       >
         <Container maxWidth="lg">
           {/* <SettingsNotifications /> */}
-          {/* <Box sx={{ pt: 3 }}> */}
-          <SettingsPassword 
-            user={user}
-            updateUser={updateUser}
-          />
-          {/* </Box> */}
+          <Box sx={{ pt: 3 }}>{/* <SettingsPassword user={user} updateUser={updateUser} /> */}</Box>
         </Container>
       </Box>
     </>

@@ -1,12 +1,4 @@
-import { useState } from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Divider,
-  Grid,
-} from '@mui/material';
+import { Box, Button, Card, CardContent, Divider, Grid, CardHeader } from '@mui/material';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import TelField from '../form/TelField';
@@ -29,22 +21,11 @@ const AccountProfileDetails = ({ user, updateUser }) => {
       })}
       onSubmit={onSubmit}
     >
-      {({
-        errors,
-        handleBlur,
-        handleSubmit,
-        setFieldValue,
-        isSubmitting,
-        touched,
-        values
-      }) => (
+      {({ errors, handleBlur, handleSubmit, setFieldValue, isSubmitting, touched, values }) => (
         <form onSubmit={handleSubmit}>
           <Card>
-            {/* <CardHeader
-              subheader="The information can be edited"
-              title="Profile"
-            />
-            <Divider /> */}
+            <CardHeader subheader="Upraviť svoj profil" title="Profil" />
+            <Divider />
             <CardContent>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -52,7 +33,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="Name"
+                    label="Meno"
                     name="name"
                     value={values.name}
                     variant="outlined"
@@ -63,7 +44,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="Email Address"
+                    label="Emailová adresa"
                     name="email"
                     disabled
                     onBlur={handleBlur}
@@ -77,7 +58,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="Phone"
+                    label="Telefón"
                     name="tel"
                     value={values.tel}
                     country={values.country}
@@ -88,7 +69,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="Address"
+                    label="Adresa"
                     name="address"
                     onBlur={handleBlur}
                     value={values.address}
@@ -100,7 +81,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="Country"
+                    label="Krajina"
                     name="countryId"
                     value={values.countryId}
                     variant="outlined"
@@ -112,7 +93,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="City"
+                    label="Mesto"
                     name="city"
                     value={values.city}
                     variant="outlined"
@@ -123,7 +104,7 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                     fullWidth
                     errorText={touched.name && errors.name}
                     setValue={setFieldValue}
-                    label="PostCode"
+                    label="PSČ"
                     name="postCode"
                     value={values.postCode}
                     variant="outlined"
@@ -138,13 +119,8 @@ const AccountProfileDetails = ({ user, updateUser }) => {
                 p: 2
               }}
             >
-              <Button
-                color="primary"
-                variant="contained"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                Save details
+              <Button color="primary" variant="contained" type="submit" disabled={isSubmitting}>
+                Uložiť zmeny
               </Button>
             </Box>
           </Card>
