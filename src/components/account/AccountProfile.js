@@ -11,6 +11,7 @@ const AccountProfile = ({ user, updateUser }) => {
   return (
     <Card>
       <CardHeader title="Logo cukrárne" subheader="Zmena loga " />
+      <Divider />
       <CardContent>
         <Box
           sx={{
@@ -20,14 +21,11 @@ const AccountProfile = ({ user, updateUser }) => {
           }}
         >
           <AvatarPicker src={user.avatar} onChange={onChangeAvatar} />
-          <Typography color="textPrimary" gutterBottom variant="h3">
+          <Typography color="textPrimary" gutterBottom variant="h2">
             {user.name}
           </Typography>
           <Typography color="textSecondary" variant="body1">
             {user.email}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {`${user.city} ${user.country}`}
           </Typography>
         </Box>
       </CardContent>

@@ -62,22 +62,22 @@ const SettingsPassword = ({ user, updateUser }) => {
                 margin="normal"
               />
             </CardContent>
-            <Box
+            {/* <Box
               sx={{
                 display: 'flex',
                 justifyContent: 'flex-end',
                 p: 2
               }}
             >
-              {/* <Button
+              <Button
                 color="primary"
                 variant="contained"
                 type="submit"
                 disabled={isSubmitting}
               >
                 Update
-              </Button> */}
-            </Box>
+              </Button>
+            </Box> */}
           </Card>
         </form>
       )}
