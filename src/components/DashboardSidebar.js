@@ -28,7 +28,7 @@ const items = [
   },
   {
     href: '/app/produkty',
-    icon: FolderIcon,
+    icon: ShoppingBagIcon,
     title: 'Produkty'
   },
   {

@@ -7,6 +7,8 @@ import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import MoveUpIcon from '@mui/icons-material/MoveUp';
 import { useNavigate } from 'react-router';
 import { grey } from '@mui/material/colors';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductCard = ({ item, deleteProduct, updateProduct }) => {
   let navigate = useNavigate();
@@ -42,22 +44,30 @@ const ProductCard = ({ item, deleteProduct, updateProduct }) => {
     navigate(`../produkt/${id}`);
   };
 
-  const markAsUnavailble = async (id) => {
+  const markAsUnavailble = (id) => {
     let data = {
       ...newProduct,
       disabled: !item.disabled
     };
 
-    await updateProduct(id, data);
+    const unavalable = updateProduct(id, data);
+    toast.promise(unavalable, {
+      success: item.disabled ? 'Produkt je opäť dostupný' : 'Produkt je nedostupný',
+      error: item.disabled ? 'Produkt sa nepodarilo označiť ako dostupný' : 'Produkt sa nepodarilo označiť ako nedostupný'
+    });
   };
 
-  const promote = async (id) => {
+  const promote = (id) => {
     let data = {
       ...newProduct,
       promote: !item.promote
     };
 
-    await updateProduct(id, data);
+    const promo = updateProduct(id, data);
+    toast.promise(promo, {
+      success: item.promote ? 'Produkt bol odobraný z úvodnej stránky' : 'Produkt je na úvodnej stránke',
+      error: item.promote ? 'Produkt sa nepodarilo pridať na úvodnú stránku' : 'Produkt sa nepodarilo odobrať z úvodnej stránky'
+    });
   };
 
   const actions = [
