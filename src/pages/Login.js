@@ -2,15 +2,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Link,
-  TextField,
-  Typography
-} from '@mui/material';
+import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
 import FacebookIcon from '../icons/Facebook';
 import GoogleIcon from '../icons/Google';
 import { useAuth } from 'src/contexts/auth';
@@ -22,7 +14,7 @@ const Login = () => {
   const onSubmit = async (data, { resetForm }) => {
     const isAuth = await auth(data.email, data.password);
     if (isAuth) {
-      navigate('/app/dashboard', { replace: true });
+      navigate('/app/prehlad', { replace: true });
     } else {
       resetForm({
         values: {
@@ -55,33 +47,18 @@ const Login = () => {
               password: ''
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string()
-                .email('Must be a valid email')
-                .max(255)
-                .required('Email is required'),
+              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
               password: Yup.string().max(255).required('Password is required')
             })}
             onSubmit={onSubmit}
           >
-            {({
-              errors,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting,
-              touched,
-              values
-            }) => (
+            {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
                   <Typography color="textPrimary" variant="h2">
                     Sign in
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="body2"
-                  >
+                  <Typography color="textSecondary" gutterBottom variant="body2">
                     Sign in on the internal platform
                   </Typography>
                 </Box>
@@ -162,25 +139,13 @@ const Login = () => {
                   variant="outlined"
                 />
                 <Box sx={{ py: 2 }}>
-                  <Button
-                    color="primary"
-                    disabled={isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
+                  <Button color="primary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
                     Sign in now
                   </Button>
                 </Box>
                 <Typography color="textSecondary" variant="body1">
                   Don&apos;t have an account?{' '}
-                  <Link
-                    component={RouterLink}
-                    to="/register"
-                    variant="h6"
-                    underline="hover"
-                  >
+                  <Link component={RouterLink} to="/register" variant="h6" underline="hover">
                     Sign up
                   </Link>
                 </Typography>

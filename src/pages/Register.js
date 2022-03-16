@@ -2,16 +2,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  FormHelperText,
-  Link,
-  TextField,
-  Typography
-} from '@mui/material';
+import { Box, Button, Checkbox, Container, FormHelperText, Link, TextField, Typography } from '@mui/material';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -39,41 +30,24 @@ const Register = () => {
               password: '',
               policy: false
             }}
-            validationSchema={
-            Yup.object().shape({
+            validationSchema={Yup.object().shape({
               email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
               firstName: Yup.string().max(255).required('First name is required'),
               lastName: Yup.string().max(255).required('Last name is required'),
               password: Yup.string().max(255).required('password is required'),
               policy: Yup.boolean().oneOf([true], 'This field must be checked')
-            })
-          }
+            })}
             onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+              navigate('/app/prehlad', { replace: true });
             }}
           >
-            {({
-              errors,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting,
-              touched,
-              values
-            }) => (
+            {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
-                  <Typography
-                    color="textPrimary"
-                    variant="h2"
-                  >
+                  <Typography color="textPrimary" variant="h2">
                     Create new account
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="body2"
-                  >
+                  <Typography color="textSecondary" gutterBottom variant="body2">
                     Use your email to create new account
                   </Typography>
                 </Box>
@@ -134,51 +108,22 @@ const Register = () => {
                     ml: -1
                   }}
                 >
-                  <Checkbox
-                    checked={values.policy}
-                    name="policy"
-                    onChange={handleChange}
-                  />
-                  <Typography
-                    color="textSecondary"
-                    variant="body1"
-                  >
-                    I have read the
-                    {' '}
-                    <Link
-                      color="primary"
-                      component={RouterLink}
-                      to="#"
-                      underline="always"
-                      variant="h6"
-                    >
+                  <Checkbox checked={values.policy} name="policy" onChange={handleChange} />
+                  <Typography color="textSecondary" variant="body1">
+                    I have read the{' '}
+                    <Link color="primary" component={RouterLink} to="#" underline="always" variant="h6">
                       Terms and Conditions
                     </Link>
                   </Typography>
                 </Box>
-                {Boolean(touched.policy && errors.policy) && (
-                <FormHelperText error>
-                  {errors.policy}
-                </FormHelperText>
-                )}
+                {Boolean(touched.policy && errors.policy) && <FormHelperText error>{errors.policy}</FormHelperText>}
                 <Box sx={{ py: 2 }}>
-                  <Button
-                    color="primary"
-                    disabled={isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
+                  <Button color="primary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
                     Sign up now
                   </Button>
                 </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                >
-                  Have an account?
-                  {' '}
+                <Typography color="textSecondary" variant="body1">
+                  Have an account?{' '}
                   <Link component={RouterLink} to="/login" variant="h6" underline="hover">
                     Sign in
                   </Link>
