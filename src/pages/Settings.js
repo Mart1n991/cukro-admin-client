@@ -1,11 +1,19 @@
 import { Helmet } from 'react-helmet';
-import { Box, Container } from '@mui/material';
-// import SettingsNotifications from '../components/settings/SettingsNotifications';
-import SettingsPassword from '../components/settings/SettingsPassword';
-import { useAuth } from 'src/contexts/auth';
+import { Box, Container, Grid } from '@mui/material';
+import Settings from 'src/components/settings/Settings';
+import { useCukro } from '../contexts/cukro';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 const SettingsView = () => {
-  const { user, updateUser } = useAuth();
+  const { userMeta, getUserMeta, postUserMeta } = useCukro();
+  useEffect(() => {
+    const response = getUserMeta();
+    toast.promise(response, {
+      pending: 'Nastavenia sa načítavajú',
+      error: 'Nastavenia sa nepodarilo načítať'
+    });
+  }, []);
 
   return (
     <>
@@ -20,8 +28,11 @@ const SettingsView = () => {
         }}
       >
         <Container maxWidth="lg">
-          {/* <SettingsNotifications /> */}
-          <Box sx={{ pt: 3 }}>{/* <SettingsPassword user={user} updateUser={updateUser} /> */}</Box>
+          <Grid container spacing={3}>
+            <Grid item lg={12} md={6} xs={12}>
+              <Settings data={userMeta} postUserMeta={postUserMeta} />
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     </>

@@ -52,7 +52,6 @@ export const addProduct = (data) => {
 
 export const editProduct = async (id, data) => {
   const url = buildUrl('product');
-  // doplnit try/catch
   const req = {
     categoryRefs: [{ id: data.categoryId }],
     deliveryDate: data.deliveryDate,
@@ -86,4 +85,16 @@ export const getCategoryList = async (filters, sort, page) => {
     data: data,
     total: res.total
   };
+};
+
+export const userMeta = () => {
+  const url = buildUrl('user/meta');
+  return ajax.get(url);
+};
+
+export const postUserMeta = async (data) => {
+  for (let name in data) {
+    const url = buildUrl(`user/meta`);
+    await ajax.post(url, data[name], { key: name });
+  }
 };

@@ -30,6 +30,13 @@ export function CukroProvider({ children }) {
     total: 0
   });
 
+  const [userMeta, setUserMeta] = useState({
+    paymentType: 'stripe',
+    weddings: false,
+    stopProduction: false,
+    color: '#E2A3C7'
+  });
+
   async function getProducts(filters, sort, page) {
     try {
       const data = await cukroUtils.getProducts(filters, sort, page);
@@ -91,6 +98,21 @@ export function CukroProvider({ children }) {
     }
   }
 
+  async function getUserMeta() {
+    try {
+      const res = await cukroUtils.userMeta();
+      setUserMeta({
+        paymentType: res.paymentType,
+        weddings: res.weddings,
+        stopProduction: res.stopProduction,
+        color: res.color
+      });
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
   return (
     <CukroContext.Provider
       value={{
@@ -104,7 +126,10 @@ export function CukroProvider({ children }) {
         addProduct: cukroUtils.addProduct,
         editProduct: cukroUtils.editProduct,
         deleteProduct,
-        updateProduct
+        updateProduct,
+        getUserMeta,
+        postUserMeta: cukroUtils.postUserMeta,
+        userMeta
       }}
     >
       {children}
