@@ -30,7 +30,7 @@ const ProductList = () => {
         }}
       >
         <Container maxWidth={false}>
-          <ProductListToolbar setProduct={setProduct} />
+          <ProductListToolbar setProduct={setProduct} getProducts={getProducts} />
           <Box sx={{ pt: 5 }}>
             <Grid container spacing={3}>
               {products.data.map((item) => (
@@ -47,7 +47,7 @@ const ProductList = () => {
               pt: 3
             }}
           >
-            <Pagination color="primary" count={3} size="small" />
+            {/* <Pagination color="primary" count={3} size="small" /> */}
           </Box>
         </Container>
         <ToastContainer />
