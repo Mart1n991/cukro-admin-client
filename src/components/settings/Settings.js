@@ -60,7 +60,7 @@ export default function Settings({ data, postUserMeta }) {
                       </RadioGroup>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item lg={6} xs={12}>
                     <SwitchField
                       value={values.weddings}
                       name="weddings"
@@ -68,20 +68,19 @@ export default function Settings({ data, postUserMeta }) {
                       setValue={setFieldValue}
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    <SwitchField value={values.stopProduction} name="stopProduction" label="Vypnúť produkciu" setValue={setFieldValue} />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={3}>
-                  <Grid item lg={6}>
+
+                  <Grid item lg={6} xs={12}>
+                    <FormLabel id="demo-radio-buttons-group-label">Farebná schéma predajnej stránky</FormLabel>
+
                     <Field name="color">
                       {() => {
                         return <CirclePicker color={values.color} colors={colors} onChange={(e) => setFieldValue('color', e.hex)} />;
                       }}
                     </Field>
-
-                    {/* <FormLabel>Aktuálna farba predajnej stránky</FormLabel> */}
-                    {/* <Box sx={{ width: 240, height: 50, backgroundColor: values.color }} /> */}
+                    <Box sx={{ marginTop: 2, width: 240, height: 50, backgroundColor: values.color }} />
+                  </Grid>
+                  <Grid item lg={6} xs={12}>
+                    <SwitchField value={values.stopProduction} name="stopProduction" label="Vypnúť produkciu" setValue={setFieldValue} />
                   </Grid>
                 </Grid>
               </CardContent>
