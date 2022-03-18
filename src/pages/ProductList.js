@@ -33,7 +33,7 @@ const ProductList = () => {
           <ProductListToolbar setProduct={setProduct} getProducts={getProducts} />
           <Box sx={{ pt: 5 }}>
             <Grid container spacing={3}>
-              {products.data.map((item) => (
+              {products.data.reverse().map((item) => (
                 <Grid item key={item._id} lg={3} md={4} xs={12}>
                   <ProductCard item={item} deleteProduct={deleteProduct} updateProduct={updateProduct} />
                 </Grid>
