@@ -1,19 +1,10 @@
 import { v4 as uuid } from 'uuid';
 import moment from 'moment';
-import {
-  Box,
-  Button,
-  Card,
-  CardHeader,
-  Divider,
-  IconButton,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText
-} from '@mui/material';
+import { Box, Button, Card, CardHeader, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const products = [
   {
@@ -48,51 +39,47 @@ const products = [
   }
 ];
 
-const LatestProducts = (props) => (
-  <Card {...props}>
-    <CardHeader subtitle={`${products.length} in total`} title="Produkty" />
-    <Divider />
-    <List>
-      {products.map((product, i) => (
-        <ListItem divider={i < products.length - 1} key={product.id}>
-          <ListItemAvatar>
-            <img
-              alt={product.name}
-              src={product.imageUrl}
-              style={{
-                height: 48,
-                width: 48
-              }}
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary={product.name}
-            secondary={`Updated ${product.updatedAt.fromNow()}`}
-          />
-          {/* <IconButton edge="end" size="small">
+const LatestProducts = (props) => {
+  let navigate = useNavigate();
+
+  return (
+    <Card {...props}>
+      <CardHeader subtitle={`${products.length} in total`} title="Produkty" />
+      <Divider />
+      <List>
+        {products.map((product, i) => (
+          <ListItem divider={i < products.length - 1} key={product.id}>
+            <ListItemAvatar>
+              <img
+                alt={product.name}
+                src={product.imageUrl}
+                style={{
+                  height: 48,
+                  width: 48
+                }}
+              />
+            </ListItemAvatar>
+            <ListItemText primary={product.name} secondary={`Updated ${product.updatedAt.fromNow()}`} />
+            {/* <IconButton edge="end" size="small">
             <MoreVertIcon />
           </IconButton> */}
-        </ListItem>
-      ))}
-    </List>
-    <Divider />
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'flex-end',
-        p: 2
-      }}
-    >
-      <Button
-        color="primary"
-        endIcon={<ArrowRightIcon />}
-        size="small"
-        variant="text"
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          p: 2
+        }}
       >
-        Všetky
-      </Button>
-    </Box>
-  </Card>
-);
+        <Button color="primary" endIcon={<ArrowRightIcon />} size="small" variant="text" onClick={() => navigate('/app/produkty')}>
+          Všetky
+        </Button>
+      </Box>
+    </Card>
+  );
+};
 
 export default LatestProducts;
