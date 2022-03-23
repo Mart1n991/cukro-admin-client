@@ -6,7 +6,6 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const ProductListToolbar = (props) => {
   const [activeFilter, setActiveFilter] = useState('all');
-  console.log('activeFilter: ', activeFilter);
   let navigate = useNavigate();
 
   const newProduct = () => {
@@ -28,7 +27,8 @@ const ProductListToolbar = (props) => {
 
   const filterProducts = (op, categoryId) => {
     const filter = [{ field: 'categoryRefs.id', op: op, value: categoryId }];
-    const response = categoryId === '' ? props.getProducts() : props.getProducts(filter);
+    const sort = { field: 'created', dir: 'desc' };
+    const response = categoryId === '' ? props.getProducts([], sort) : props.getProducts(filter);
     toast.promise(response, {
       pending: 'Produkty sa načítavajú',
       error: 'Produkty sa nepodarilo načítať'

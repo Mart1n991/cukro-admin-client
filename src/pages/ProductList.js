@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ProductList = () => {
   const { products, getProducts, deleteProduct, setProduct, updateProduct } = useCukro();
   useEffect(() => {
-    const response = getProducts();
+    const response = getProducts([], { field: 'created', dir: 'desc' });
     toast.promise(response, {
       pending: 'Produkty sa načítavajú',
       error: 'Produkty sa nepodarilo načítať'
@@ -33,7 +33,7 @@ const ProductList = () => {
           <ProductListToolbar setProduct={setProduct} getProducts={getProducts} />
           <Box sx={{ pt: 5 }}>
             <Grid container spacing={3}>
-              {products.data.reverse().map((item) => (
+              {products.data.map((item) => (
                 <Grid item key={item._id} lg={3} md={4} xs={12}>
                   <ProductCard item={item} deleteProduct={deleteProduct} updateProduct={updateProduct} />
                 </Grid>
@@ -46,9 +46,7 @@ const ProductList = () => {
               justifyContent: 'center',
               pt: 3
             }}
-          >
-            {/* <Pagination color="primary" count={3} size="small" /> */}
-          </Box>
+          ></Box>
         </Container>
         <ToastContainer />
       </Box>
