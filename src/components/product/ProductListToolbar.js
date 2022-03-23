@@ -28,7 +28,7 @@ const ProductListToolbar = (props) => {
   const filterProducts = (op, categoryId) => {
     const filter = [{ field: 'categoryRefs.id', op: op, value: categoryId }];
     const sort = { field: 'created', dir: 'desc' };
-    const response = categoryId === '' ? props.getProducts([], sort) : props.getProducts(filter);
+    const response = categoryId === '' ? props.getProducts([], sort) : props.getProducts(filter, sort);
     toast.promise(response, {
       pending: 'Produkty sa načítavajú',
       error: 'Produkty sa nepodarilo načítať'

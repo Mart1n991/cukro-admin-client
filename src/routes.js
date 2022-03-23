@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import Settings from './pages/Settings';
 import ProductsList from './pages/ProductsList';
 import Product from './pages/Product';
+import OrderList from './pages/OrderList';
 
 const routes = [
   {
@@ -24,6 +25,7 @@ const routes = [
       { path: 'produkty', element: <ProductList /> },
       { path: 'produkt/novy', element: <Product /> },
       { path: 'produkt/:id', element: <Product /> },
+      { path: 'objednavky', element: <OrderList /> },
       { path: 'nastavenia', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]

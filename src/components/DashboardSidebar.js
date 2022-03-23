@@ -11,7 +11,8 @@ import {
   User as UserIcon,
   UserPlus as UserPlusIcon,
   Users as UsersIcon,
-  File as FolderIcon
+  File as FolderIcon,
+  CreditCard as CreditCardIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -25,6 +26,11 @@ const items = [
     href: '/app/zakaznici',
     icon: UsersIcon,
     title: 'Zákazníci'
+  },
+  {
+    href: '/app/objednavky',
+    icon: CreditCardIcon,
+    title: 'Objednávky'
   },
   {
     href: '/app/produkty',
