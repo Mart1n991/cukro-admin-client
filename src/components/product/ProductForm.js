@@ -152,7 +152,7 @@ const ProductForm = ({ categoryList, productId }) => {
                   </Grid>
                   <Grid item lg={4} md={6} xs={12} sx={{ display: 'flex', flexDirection: 'column' }}>
                     <TextField name="photo" type="file" margin="normal" />
-                    {(values.categoryId === '6217af354c49a4266b3007ac' || values.categoryId === '6217ae954c49a4266b3007ab') && (
+                    {values.categoryId === '6217ae954c49a4266b3007ab' && (
                       <FormControlLabel
                         control={
                           <Switch
