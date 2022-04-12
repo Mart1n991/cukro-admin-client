@@ -22,7 +22,8 @@ export function CukroProvider({ children }) {
     materials: [],
     minimumAmount: 1,
     disabled: false,
-    promote: false
+    promote: false,
+    uniqueCategoryId: ''
   });
 
   const [categoryList, setCategoryList] = useState({

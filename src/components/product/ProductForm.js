@@ -30,9 +30,10 @@ const validationSchema = Yup.object().shape({
     then: Yup.string().required('Príchuť je povinné pole')
   }),
   shape: Yup.string().when('hasShape', { is: true, then: Yup.string().required('Zvoľte tvar') }),
-  price: Yup.number().min(1).required('Cena je povinné pole'),
+  price: Yup.number().min(1, 'Cena musí byť vyššia ako 0').required('Cena je povinné pole'),
   material: Yup.string().min(4).max(25),
-  materials: Yup.array().of(Yup.string())
+  materials: Yup.array().of(Yup.string()),
+  uniqueCategoryId: Yup.string().required('Zadajte ID pre danú kategóriu')
 });
 
 const ProductForm = ({ categoryList, productId }) => {
@@ -210,7 +211,17 @@ const ProductForm = ({ categoryList, productId }) => {
                       helperText={touched.price && errors.price}
                     />
                   </Grid>
-                  <Grid item lg={4} md={12} xs={12}>
+                  <Grid item lg={4} md={12} xs={12} sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <TextField
+                      label="Unikátny identifikátor"
+                      name="uniqueCategoryId"
+                      value={values.uniqueCategoryId}
+                      onChange={(e) => onChange(e, setFieldValue)}
+                      margin="normal"
+                      type="text"
+                      error={Boolean(touched.uniqueCategoryId && errors.uniqueCategoryId)}
+                      helperText={touched.uniqueCategoryId && errors.uniqueCategoryId}
+                    />
                     <FieldArray name="materials">
                       {(fieldArrayProps) => {
                         const { push, remove, form } = fieldArrayProps;
