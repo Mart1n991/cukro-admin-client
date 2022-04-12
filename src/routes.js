@@ -25,6 +25,7 @@ const routes = [
       { path: 'produkty', element: <ProductList /> },
       { path: 'produkt/novy', element: <Product /> },
       { path: 'produkt/:id', element: <Product /> },
+      { path: 'produkt/:id/kopia', element: <Product /> },
       { path: 'objednavky', element: <OrderList /> },
       { path: 'nastavenia', element: <Settings /> },
       { path: '*', element: <Navigate to="/404" /> }

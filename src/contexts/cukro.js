@@ -61,7 +61,8 @@ export function CukroProvider({ children }) {
       material: '',
       materials: data.materials,
       minimumAmount: data.minimumAmount,
-      promote: data.promote
+      promote: data.promote,
+      uniqueCategoryId: data.uniqueCategoryId
     });
   }
 

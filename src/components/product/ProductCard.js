@@ -5,6 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import MoveUpIcon from '@mui/icons-material/MoveUp';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useNavigate } from 'react-router';
 import { grey } from '@mui/material/colors';
 import { toast } from 'react-toastify';
@@ -26,7 +27,8 @@ const ProductCard = ({ item, deleteProduct, updateProduct }) => {
     materials: item.materials,
     minimumAmount: item.minimumAmount,
     disabled: item.disabled,
-    promote: item.promote
+    promote: item.promote,
+    uniqueCategoryId: item.uniqueCategoryId
   };
 
   const productCategoryName = (categoryId) => {
@@ -42,6 +44,10 @@ const ProductCard = ({ item, deleteProduct, updateProduct }) => {
 
   const edit = (id) => {
     navigate(`../produkt/${id}`);
+  };
+
+  const copy = (id) => {
+    navigate(`../produkt/${id}/kopia`);
   };
 
   const markAsUnavailble = (id) => {
@@ -77,6 +83,13 @@ const ProductCard = ({ item, deleteProduct, updateProduct }) => {
       element: <ModeEditIcon color="action" />,
       description: 'Upraviť produkt',
       action: edit
+    },
+    {
+      label: 'copy',
+      value: 9,
+      element: <ContentCopyIcon color="action" />,
+      description: 'Vytvoriť kópiu produktu',
+      action: copy
     },
     {
       label: 'disable',

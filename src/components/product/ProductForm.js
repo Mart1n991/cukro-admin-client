@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMatch } from 'react-router';
 import {
   Box,
   Card,
@@ -39,6 +40,8 @@ const validationSchema = Yup.object().shape({
 const ProductForm = ({ categoryList, productId }) => {
   const { addProduct, editProduct, product } = useCukro();
 
+  const match = useMatch(`app/produkt/${productId}/kopia`);
+
   const productShape = [
     { value: 1, label: 'Kruh' },
     { value: 3, label: 'Štvorec' },
@@ -49,13 +52,15 @@ const ProductForm = ({ categoryList, productId }) => {
   ];
 
   const onSubmit = async (data, { setSubmitting, resetForm }) => {
-    if (productId !== undefined) {
+    if (productId !== undefined && match === null) {
       const edit = editProduct(productId, data);
       toast.promise(edit, {
         success: 'Produkt bol úspešne upravený 👌',
         error: 'Produkt sa nepodarilo upraviť 🤯'
       });
-    } else {
+    }
+
+    if (match !== null || productId === undefined) {
       const add = addProduct(data);
       toast.promise(add, {
         success: 'Produkt bol úspešne pridaný 👌',
@@ -63,7 +68,6 @@ const ProductForm = ({ categoryList, productId }) => {
       });
       resetForm();
     }
-
     setSubmitting(false);
   };
 

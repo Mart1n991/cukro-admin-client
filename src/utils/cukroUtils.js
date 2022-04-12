@@ -63,7 +63,8 @@ export const editProduct = async (id, data) => {
     materials: data.materials,
     minimumAmount: data.minimumAmount,
     disabled: data.disabled,
-    promote: data.promote
+    promote: data.promote,
+    uniqueCategoryId: data.uniqueCategoryId
   };
   return await ajax.put(url, req, id);
 };
